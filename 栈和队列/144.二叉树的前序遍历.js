@@ -27,6 +27,5 @@ var preorderTraversal = function (root) {
     }
     preOrder(root)
     return res
-  
 }
 // @lc code=end
