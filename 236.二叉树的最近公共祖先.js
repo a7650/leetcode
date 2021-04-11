@@ -19,6 +19,7 @@
  * @return {TreeNode}
  */
 var lowestCommonAncestor = function (root, p, q) {
+  return root
   if (!root) return null
   let pPath = []
   let qPath = []
@@ -31,13 +32,14 @@ var lowestCommonAncestor = function (root, p, q) {
         qPath = path
       }
       if (!pPath.length || !qPath.length) {
-        getPath(node.right, [...path])
         getPath(node.left, [...path])
+        getPath(node.right, [...path])
       }
     }
   }
   getPath(root, [])
   console.log(pPath, qPath)
+  return [pPath, qPath]
   const map = pPath.reduce((pre, cur) => {
     return {
       ...pre,
@@ -51,11 +53,11 @@ var lowestCommonAncestor = function (root, p, q) {
   }
 }
 
-function TreeNode(val, left, right) {
-  this.val = val
-  this.left = left
-  this.right = right
-}
-const tree = new TreeNode(3, 5, 1)
-console.log(lowestCommonAncestor(tree, 5, 1))
+// function TreeNode(val, left, right) {
+//   this.val = val
+//   this.left = left
+//   this.right = right
+// }
+// const tree = new TreeNode(3, new TreeNode(5), new TreeNode(1))
+// console.log(lowestCommonAncestor(tree, 5, 1))
 // @lc code=end
