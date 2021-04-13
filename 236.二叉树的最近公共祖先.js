@@ -19,7 +19,6 @@
  * @return {TreeNode}
  */
 var lowestCommonAncestor = function (root, p, q) {
-  return root
   if (!root) return null
   let pPath = []
   let qPath = []
