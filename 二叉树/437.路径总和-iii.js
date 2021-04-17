@@ -17,21 +17,21 @@
  * @param {TreeNode} root
  * @param {number} targetSum
  * @return {number}
+ * 前缀和解法
  */
-var pathSum = function (root, targetSum) {
-  if (!root) return 0
-  return (
-    findNode(root, targetSum) +
-    pathSum(root.left, targetSum) +
-    pathSum(root.right, targetSum)
-  )
-}
-function findNode(node, sum) {
-  if (!node) return 0
-  return (
-    (node.val === sum ? 1 : 0) +
-    findNode(node.left, sum - node.val) +
-    findNode(node.right, sum - node.val)
-  )
+var pathSum = function (root, sum) {
+  let ans = 0
+  let map = new Map()
+  function dfs(presum, node) {
+    if (!node) return 0
+    map.set(presum, (map.get(presum) || 0) + 1)
+    let target = presum + node.val
+    ans += map.get(target - sum) || 0
+    dfs(target, node.left)
+    dfs(target, node.right)
+    map.set(presum, map.get(presum) - 1)
+  }
+  dfs(0, root)
+  return ans
 }
 // @lc code=end
