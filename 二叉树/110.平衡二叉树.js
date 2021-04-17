@@ -18,16 +18,16 @@
  * @return {boolean}
  */
 var isBalanced = function (root) {
-  if (!root) return true
-  return (
-    Math.abs(getHeight(root.left) - getHeight(root.right)) <= 1 &&
-    isBalanced(root.left) &&
-    isBalanced(root.right)
-  )
+  return height(root) !== -1
 }
 
-function getHeight(node) {
+function height(node) {
   if (!node) return 0
-  return Math.max(getHeight(node.left), getHeight(node.right)) + 1
+  const left = height(node.left)
+  const right = height(node.right)
+  if (left === -1 || right === -1 || Math.abs(left - right) > 1) {
+    return -1
+  }
+  return Math.max(left, right) + 1
 }
 // @lc code=end
