@@ -18,19 +18,15 @@
  * @return {number}
  */
 var sumNumbers = function (root) {
-  let result = 0
   const dfs = (node, num) => {
-    if (node) {
-      const val = num + node.val
-      if (node.left === null && node.right === null) {
-        result += Number(val)
-      } else {
-        dfs(node.left, val)
-        dfs(node.right, val)
-      }
+    if (!node) return 0
+    const val = num * 10 + node.val
+    if (node.left === null && node.right === null) {
+      return val
+    } else {
+      return dfs(node.left, val) + dfs(node.right, val)
     }
   }
-  dfs(root, '')
-  return result
+  return dfs(root, 0)
 }
 // @lc code=end
