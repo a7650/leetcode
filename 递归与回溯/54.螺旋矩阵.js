@@ -20,6 +20,7 @@ const spiralOrder = function (matrix) {
   const visitedPos = new Array(row)
     .fill(null)
     .map(() => new Array(col).fill(false))
+  console.log(visitedPos)
 
   let directives = [
     [0, 1],
@@ -37,7 +38,27 @@ const spiralOrder = function (matrix) {
     visitedPos[curRow][curCol] = true
     const nextRow = curRow + directives[curDir][0]
     const nextCol = curCol + directives[curDir][1]
-    if(nextRow < 0 || nextCol < 0 || )
+    if (
+      nextRow < 0 ||
+      nextCol < 0 ||
+      nextRow >= row ||
+      nextCol >= col ||
+      visitedPos[nextRow][nextCol]
+    ) {
+      curDir = (curDir + 1) % 4
+      curRow = curRow + directives[curDir][0]
+      curCol = curCol + directives[curDir][1]
+    } else {
+      curRow = nextRow
+      curCol = nextCol
+    }
   }
+  return ret
 }
+
+spiralOrder([
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+])
 // @lc code=end
