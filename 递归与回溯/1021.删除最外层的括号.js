@@ -10,7 +10,7 @@
  * @return {string}
  */
 var removeOuterParentheses = function(S) {
-
+  
 };
 // @lc code=end
 
