@@ -26,6 +26,4 @@ var permute = function (nums) {
   dfs(nums, [])
   return ret
 }
-
-console.log(permute([1, 2, 3]))
 // @lc code=end
