@@ -1,4 +1,3 @@
-package 动态规划;
 /*
  * @lc app=leetcode.cn id=70 lang=java
  *
