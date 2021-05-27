@@ -16,7 +16,6 @@ var combine = function (n, k) {
   const nums = Array(n)
     .fill(null)
     .map((_, idx) => idx + 1)
-  console.log(nums)
   const len = nums.length
 
   const dfs = (idx) => {
