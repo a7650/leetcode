@@ -22,7 +22,6 @@ var isValidBST = function (root) {
   const dfs = (node) => {
     if (node) {
       dfs(node.left)
-       node.
     }
   }
 }
