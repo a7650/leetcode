@@ -19,44 +19,20 @@
  * @return {TreeNode}
  */
 var lowestCommonAncestor = function (root, p, q) {
-  if (!root) return null
-  let pPath = []
-  let qPath = []
-  const getPath = (node, path) => {
-    if (node) {
-      path = [...path, node.val]
-      if (node.val === p) {
-        pPath = path
-      } else if (node.val === q) {
-        qPath = path
-      }
-      if (!pPath.length || !qPath.length) {
-        getPath(node.left, [...path])
-        getPath(node.right, [...path])
-      }
+  let ans
+  const dfs = (root, p, q) => {
+    if (root === null) return false
+    const lson = dfs(root.left, p, q)
+    const rson = dfs(root.right, p, q)
+    if (
+      (lson && rson) ||
+      ((root.val === p.val || root.val === q.val) && (lson || rson))
+    ) {
+      ans = root
     }
+    return lson || rson || root.val === p.val || root.val === q.val
   }
-  getPath(root, [])
-  console.log(pPath, qPath)
-  return [pPath, qPath]
-  const map = pPath.reduce((pre, cur) => {
-    return {
-      ...pre,
-      [cur]: 1
-    }
-  }, {})
-  for (let i = 0; i < qPath.length; i++) {
-    if (map[qPath[i]]) {
-      return qPath[i]
-    }
-  }
+  dfs(root, p, q)
+  return ans
 }
-
-// function TreeNode(val, left, right) {
-//   this.val = val
-//   this.left = left
-//   this.right = right
-// }
-// const tree = new TreeNode(3, new TreeNode(5), new TreeNode(1))
-// console.log(lowestCommonAncestor(tree, 5, 1))
 // @lc code=end
