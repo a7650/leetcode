@@ -34,17 +34,13 @@
 // }
 
 // DFS
-const maxDepth = function (root) {
-  let rst = 0
-  if (!root) return rst
-  const dfs = (node, depth) => {
-    if (depth > rst) {
-      rst = depth
-    }
-    node.left && dfs(node.left, depth + 1)
-    node.right && dfs(node.right, depth + 1)
+var maxDepth = function (root) {
+  const dfs = (node) => {
+    if (!node) return 0
+    const l = dfs(node.left)
+    const r = dfs(node.right)
+    return Math.max(l, r) + 1
   }
-  dfs(root, 1)
-  return rst
+  return dfs(root)
 }
 // @lc code=end
