@@ -21,7 +21,7 @@ var searchMatrix = function (matrix, target) {
     } else if (val > target) {
       point[0] -= 1
     } else {
-      point[0] += 1
+      point[1] += 1
     }
   }
   return false
