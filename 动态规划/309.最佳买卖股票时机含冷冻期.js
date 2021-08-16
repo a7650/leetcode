@@ -9,8 +9,7 @@
  * @param {number[]} prices
  * @return {number}
  */
-var maxProfit = function (prices) {
-  const n = prices.length
+var maxProfit = function (prices) {\\\\const n = prices.length
   const f = Array(3).fill(0)
   f[0] = -prices[0]
   for (let i = 1; i < n; ++i) {
