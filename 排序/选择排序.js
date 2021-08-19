@@ -1,7 +1,8 @@
 function sort(arr) {
   const len = arr.length
+  let minIdx
   for (let i = 0; i < len; i++) {
-    let minIdx = i
+    minIdx = i
     for (let j = i; j < len; j++) {
       if (arr[j] < arr[minIdx]) {
         minIdx = j
