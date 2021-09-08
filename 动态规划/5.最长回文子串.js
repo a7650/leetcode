@@ -34,5 +34,22 @@ var longestPalindrome = function (s) {
   return ret
 }
 
+// export function getLongestPalindrome(a: string, n: number): number {
+//   if (n === 1) return 1
+//  let max = 1
+//  const dp = Array(n)
+//  for (let i = n - 1; i >= 0; i--) {
+//    for (let j = n - 1; j >= i; j--) {
+//      if (a[i] === a[j] && ((j - i < 3) || dp[j - 1])) {
+//        dp[j] = true
+//        max = Math.max(max, j - i + 1)
+//      }else{
+//          dp[j] = false
+//      }
+//    }
+//  }
+//  return max
+// }
+
 console.log(longestPalindrome('aaaa'))
 // @lc code=end
